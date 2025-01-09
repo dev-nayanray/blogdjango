@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 shadow-lg">
+        <div class="max-w-screen-xl mx-auto flex items-center justify-between px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight">My Blog</h1>
+            <nav class="space-x-6">
+                <a href="/" class="text-lg hover:text-gray-200 transition duration-300">Home</a>
+                <a href="/about/" class="text-lg hover:text-gray-200 transition duration-300">About</a>
+                <a href="/contact/" class="text-lg hover:text-gray-200 transition duration-300">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-screen-xl mx-auto p-6 lg:grid lg:grid-cols-4 gap-8 mt-10">
+
+        <!-- Main Content Area (Left) -->
+        <div class="lg:col-span-3 space-y-12">
+            <h2 class="text-5xl font-extrabold text-gray-900 text-center">Blog Posts</h2>
+
+            <!-- Blog Posts -->
+            <ul class="space-y-12">
+                {% for post in posts %}
+                    <li class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-8">
+                        <!-- Post Image -->
+                        <img src="{{ post.image_url }}" alt="{{ post.title }}" class="w-full h-56 object-cover rounded-lg mb-6">
+
+                        <!-- Post Title and Excerpt -->
+                        <h3 class="text-3xl font-semibold text-gray-800 hover:text-blue-600 transition duration-200">{{ post.title }}</h3>
+                        <p class="text-gray-600 mt-4 text-lg">{{ post.content|slice:":150" }}...</p>
+
+                        <!-- Post Meta Information (Date) -->
+                        <div class="mt-4 text-sm text-gray-500">
+                            <span>{{ post.created_at|date:"F j, Y" }}</span>
+                        </div>
+
+                        <!-- Social Media Icons -->
+                        <div class="mt-4 flex space-x-6">
+                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-facebook-f"></i> Share</a>
+                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-twitter"></i> Tweet</a>
+                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin-in"></i> Share</a>
+                        </div>
+
+                        <!-- Read More Link -->
+                        <a href="{% url 'post_detail' post.id %}" class="inline-block mt-6 text-lg text-blue-500 hover:text-blue-700 font-semibold">Read More</a>
+                    </li>
+                {% empty %}
+                    <li class="text-center text-gray-500">No posts available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Sidebar (Right) -->
+        <div class="lg:col-span-1 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Recent Posts</h2>
+            <ul class="space-y-6">
+                {% for post in posts %}
+                    <li class="flex items-center hover:bg-gray-50 transition duration-300 p-4 rounded-lg">
+                        <!-- Post Image (Thumbnail) -->
+                        <img src="{{ post.image_url }}" alt="{{ post.title }}" class="w-16 h-16 object-cover rounded-full mr-6">
+
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-200">
+                                <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+                            </h3>
+                            <p class="text-sm text-gray-500">{{ post.created_at|date:"F j, Y" }}</p>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li class="text-center text-gray-500">No recent posts.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-screen-xl mx-auto text-center">
+            <p>&copy; 2025 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social media icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</body>
+</html>

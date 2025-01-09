@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation Bar (same as in index.html) -->
+
+    <!-- Post Detail Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-6">{{ post.title }}</h1>
+            <img class="w-full h-80 object-cover mb-8" src="{{ post.image_url }}" alt="{{ post.title }}">
+            <p class="text-lg text-gray-700">{{ post.content }}</p>
+        </div>
+    </section>
+
+    <!-- Footer (same as in index.html) -->
+
+</body>
+
+</html>

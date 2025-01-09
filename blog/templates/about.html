@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-roboto">
+
+    <!-- Header -->
+    <header class="bg-blue-700 text-white py-4 fixed top-0 w-full z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <a href="/" class="text-3xl font-bold text-white tracking-tight hover:text-blue-200 transition duration-300">My Blog</a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">Home</a>
+                    <a href="/about/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">About</a>
+                    <a href="/contact/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">Contact</a>
+                    <a href="/blog/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="py-20 mt-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-semibold mb-6 text-gray-900">{{ title }}</h2>
+
+            <!-- About Content -->
+            <div class="bg-blue-100 p-8 rounded-lg shadow-md mb-12">
+                <h3 class="text-3xl font-semibold text-blue-700 mb-4">Welcome to Our Blog</h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Welcome to our blog, where we share insightful articles, tips, and discussions on topics ranging from tech, lifestyle, health, and more. Our goal is to bring you high-quality content that is not only informative but also engaging. Whether you are here to stay updated with the latest trends or find inspiration, we hope you enjoy reading our posts.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Our team is dedicated to bringing you the best content. Each of us has a unique background and perspective that we bring to the table, ensuring a diverse and enriching experience for our readers. Thank you for visiting our site. We appreciate your support, and we look forward to growing together.
+                </p>
+            </div>
+
+            <!-- Our Team Section -->
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6">Meet Our Team</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for member in team_members %}
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                        {% if member.photo %}
+                            <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="w-full h-48 object-cover rounded-md mb-4">
+                        {% endif %}
+                        <h4 class="text-xl font-bold text-gray-800">{{ member.name }}</h4>
+                        <p class="text-sm text-gray-600 mb-4">{{ member.role }}</p>
+                        <p class="text-gray-700 text-sm">{{ member.bio }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-700 text-white py-4 text-center">
+        <p>&copy; 2025 My Blog. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

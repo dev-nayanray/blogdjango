@@ -1,0 +1,77 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-roboto">
+
+    <!-- Header -->
+    <header class="bg-blue-700 text-white py-4 fixed top-0 w-full z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Title -->
+                <a href="/" class="text-3xl font-bold text-white tracking-tight hover:text-blue-200 transition duration-300">My Blog</a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">Home</a>
+                    <a href="/about/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">About</a>
+                    <a href="/contact/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">Contact</a>
+                    <a href="/blog/" class="px-4 py-2 text-lg hover:bg-blue-600 rounded-md transition duration-300">Blog</a>
+                </nav>
+
+                <!-- Hamburger Menu for Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="hamburger-menu" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="py-20 mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-semibold mb-6">{{ title }}</h2>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold">Get in Touch</h3>
+                <p class="mt-4 text-gray-800">We would love to hear from you! You can reach us at:</p>
+                <ul class="mt-4">
+                    <li class="mt-2 text-gray-700"><strong>Address:</strong> {{ address }}</li>
+                    <li class="mt-2 text-gray-700"><strong>Phone:</strong> {{ phone }}</li>
+                    <li class="mt-2 text-gray-700"><strong>Email:</strong> <a href="mailto:{{ email }}" class="text-blue-600 hover:text-blue-800">{{ email }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-700 text-white py-4 text-center">
+        <p>&copy; 2025 My Blog. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('hamburger-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>
